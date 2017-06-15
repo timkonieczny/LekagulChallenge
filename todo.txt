@@ -1,0 +1,4 @@
+Tageweise Fahrzeuganzahl total
+Tageweise Fahrzeuganzahl für jeden Typ
+Stundenweise Fahrzeuganzahl für jeden Typ
+Für Tagesstunden Datensatz mit Dummydaten auffüllen
