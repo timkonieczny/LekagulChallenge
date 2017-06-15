@@ -2,6 +2,6 @@ div.bar {
     display: inline-block;
     width: 1px;
     height: 75px;	/* Gets overriden by D3-assigned height below */
-    margin-right: 0;
+    margin: 0;
     background-color: teal;
 }
