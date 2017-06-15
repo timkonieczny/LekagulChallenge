@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnhancedSpiral.js</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <!-- <link rel="stylesheet" href="//code.getmdl.io/1.2.1/material.blue_grey-orange.min.css"> -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="css/nouislider.css">
+    <link rel="stylesheet" href="css/ColorSelector.css">
+    <link rel="stylesheet" href="css/EnhancedSpiral.css">
+
+    <script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
+    <!-- <script src="//code.getmdl.io/1.2.1/material.min.js"></script> -->
+
+    <script src="lib/chroma.js"></script>
+    <script src="lib/nouislider.js"></script>
+    <script src="lib/canvas2svg.js"></script>
+
+    <script src="js/Constants.js"></script>
+    <script src="js/Parameter.js"></script>
+    <script src="js/Animatable.js"></script>
+    <script src="js/ColorMapper.js"></script>
+    <script src="js/ColorSelector.js"></script>
+    <script src="js/Spiral.js"></script>
+    <script src="js/EnhancedSpiral.js"></script>
+</head>
+<body>
+<div>
+    <canvas id="es"></canvas>
+    <div class="ui">
+        <h4>Enhanced Spiral</h4>
+        <div id="ui-container" class="ui-controls">
+        </div>
+        <div class="ui-controls">
+            This software builds on <a href="https://jquery.com">jQuery</a>,
+            <a href="https://necolas.github.io/normalize.css/">Normalize.css</a>,
+            <a href="http://fontawesome.io/">Font Awesome</a>,
+            <a href="https://gka.github.io/chroma.js/">chroma.js</a>, and
+            <a href="https://refreshless.com/nouislider/">noUiSlider</a>.<br/>
+            <i class="fa fa-copyright"></i> Christian Tominski, 2016
+        </div>
+    </div>
+    <main class="main main-shrunk">
+        <div class="range-container">
+            <div id="range"></div>
+        </div>
+        <div class="canvas-placeholder">
+        </div>
+        <div class="legend-container">
+        </div>
+    </main>
+    <div class="bars"><i class="fa fa-bars"></i></div>
+</div>
+
+<script>
+    $(window).load(function () {
+        new EnhancedSpiral("es")
+    });
+</script>
+</body>
+</html>
