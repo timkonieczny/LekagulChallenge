@@ -336,26 +336,43 @@ function EnhancedSpiral(canvasId) {
 
     // Load map from TopoJSON file
     var req = new XMLHttpRequest();
-    req.open("GET", "data/RostockWeather.csv");
+    //req.open("GET", "data/RostockWeather.csv");
+    req.open("GET", "data/dataDailyCountVehicle.csv");
     // req.open("GET", "data/health.csv");
     req.onload = function () {
 
         var lines = this.responseText.split("\n");
+
         var data = [];
 
         var attr = lines[0].split(";");
-        attr.forEach(function (a) {
-            data[a] = [];
-        });
 
         var i, j;
+
+
+        for(i = 0; i < attr.length; i++){
+            attr[i] = attr[i].trim();
+            data[attr[i]] = [];
+        }
+
+        /*attr.forEach(function (a) {
+            a = a.trim();
+            data[a] = [];
+        });*/
+
+
         var vals;
         for (i = 2; i < lines.length; i++) {
             vals = lines[i].split(";");
             for (j = 0; j < vals.length; j++) {
-                data[attr[j]].push(vals[j]);
+                //console.log(JSON.stringify(vals[j].trim()));
+                data[attr[j]].push(vals[j].trim());
             }
         }
+        console.log(JSON.stringify(data));
+
+        console.log("onload");
+
 
         spiral.init(data, "Temp");
         // spiral.init(data, "Influenza");
