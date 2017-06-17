@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,38 +29,50 @@
     <script src="js/Spiral.js"></script>
     <script src="js/EnhancedSpiral.js"></script>
 </head>
-<body>
-<div>
-    <canvas id="es"></canvas>
-    <div class="ui">
-        <h4>Enhanced Spiral</h4>
-        <div id="ui-container" class="ui-controls">
-        </div>
-        <div class="ui-controls">
-            This software builds on <a href="https://jquery.com">jQuery</a>,
-            <a href="https://necolas.github.io/normalize.css/">Normalize.css</a>,
-            <a href="http://fontawesome.io/">Font Awesome</a>,
-            <a href="https://gka.github.io/chroma.js/">chroma.js</a>, and
-            <a href="https://refreshless.com/nouislider/">noUiSlider</a>.<br/>
-            <i class="fa fa-copyright"></i> Christian Tominski, 2016
-        </div>
-    </div>
-    <main class="main main-shrunk">
-        <div class="range-container">
-            <div id="range"></div>
-        </div>
-        <div class="canvas-placeholder">
-        </div>
-        <div class="legend-container">
-        </div>
-    </main>
-    <div class="bars"><i class="fa fa-bars"></i></div>
-</div>
 
-<script>
-    $(window).load(function () {
-        new EnhancedSpiral("es")
-    });
-</script>
+<body>
+    <div>
+        <canvas id="es"></canvas>
+        <div class="ui">
+            <h4>Enhanced Spiral</h4>
+            <div id="ui-container" class="ui-controls">
+                <div class="param-container">
+                    <span class="param-label">Datensatz</span><br><br>
+                    <select id="dataSource" >
+                        <option value="data/dataDailyCountVehicle.csv">Anzahl Fahrzeuge pro Tag</option>
+                        <option value="data/RostockWeather.csv">Wetterdaten</option>
+                    </select>
+                </div>
+            </div>
+            <div class="ui-controls">
+                This software builds on <a href="https://jquery.com">jQuery</a>,
+                <a href="https://necolas.github.io/normalize.css/">Normalize.css</a>,
+                <a href="http://fontawesome.io/">Font Awesome</a>,
+                <a href="https://gka.github.io/chroma.js/">chroma.js</a>, and
+                <a href="https://refreshless.com/nouislider/">noUiSlider</a>.<br/>
+                <i class="fa fa-copyright"></i> Christian Tominski, 2016
+            </div>
+        </div>
+        <main class="main main-shrunk">
+            <div class="range-container">
+                <div id="range"></div>
+            </div>
+            <div class="canvas-placeholder">
+            </div>
+            <div class="legend-container">
+            </div>
+        </main>
+        <div class="bars"><i class="fa fa-bars"></i></div>
+    </div>
+
+    <script>
+        $(window).load(function () {
+            var es = new EnhancedSpiral("es");
+            var dataSelect = document.getElementById('dataSource');
+            dataSelect.addEventListener("change", function(){es.init(dataSelect.options[dataSelect.selectedIndex].value)}, false);
+            es.init(dataSelect.options[0].value);
+        });
+    </script>
 </body>
+
 </html>
