@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnhancedSpiral.js</title>
+    <link rel="icon" href="favicon.png"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="css/Xlider.css">
+    <link rel="stylesheet" href="css/ColorSelector.css">
+    <link rel="stylesheet" href="css/EnhancedSpiral.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="//code.jquery.com/jquery-2.2.3.min.js"></script>
+
+    <script src="lib/chroma.js"></script>
+    <script src="lib/canvas2svg.js"></script>
+    <script src="lib/Xlider.js"></script>
+
+    <script src="js/Constants.js"></script>
+    <script src="js/Parameter.js"></script>
+    <script src="js/Animatable.js"></script>
+    <script src="js/ColorMapper.js"></script>
+    <script src="js/ColorSelector.js"></script>
+    <script src="js/Spiral.js"></script>
+    <script src="js/EnhancedSpiral.js"></script>
+</head>
+<body>
+<div>
+    <div class="ui">
+        <h4>Enhanced Spiral</h4>
+        <div id="ui-container" class="ui-controls">
+            <div class="param-container">
+                <span class="param-label">Datensatz</span><br><br>
+                <select id="dataSource" >
+                    <option value="data/dataDailyCountVehicle.csv">Anzahl Fahrzeuge pro Tag</option>
+                    <option value="data/dataHourlyCountVehicle.csv">Anzahl Fahrzeuge pro Stunde</option>
+                    <option value="data/dataHourlyCountVehicle2.csv">Anzahl Fahrzeuge pro Stunde (nicht akkumuliert)</option>
+                    <option value="data/RostockWeather.csv">Wetterdaten</option>
+                </select>
+            </div>
+        </div>
+        <div id="ui-container" class="ui-controls">
+        </div>
+        <div class="ui-footer">
+            This software builds on <a href="https://jquery.com">jQuery</a>,
+            <a href="https://necolas.github.io/normalize.css/">Normalize.css</a>,
+            <a href="http://fontawesome.io/">Font Awesome</a>, and
+            <a href="https://gka.github.io/chroma.js/">chroma.js</a>.<br>
+            <i class="fa fa-copyright"></i> Christian Tominski, 2016-2017
+        </div>
+    </div>
+    <main class="main main-shrunk">
+        <div class="canvas-container">
+        </div>
+        <div class="legend-container">
+            <div class="colors"></div>
+            <div class="labels"></div>
+        </div>
+        <div class="range-container">
+        </div>
+    </main>
+    <div class="bars"><i class="fa fa-bars"></i></div>
+    <canvas id="vis"></canvas>
+    <div id="info"></div>
+</div>
+
+<script>
+    $(window).load(function () {
+        var es = new EnhancedSpiral();
+        var dataSelect = document.getElementById('dataSource');
+        dataSelect.addEventListener("change", function(){es.init(dataSelect.options[dataSelect.selectedIndex].value)}, false);
+        es.init(dataSelect.options[0].value);
+    });
+</script>
+</body>
+</html>
